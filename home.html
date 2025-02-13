@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="header_text">Do you wanna be my Valentine?</h1>
+            <h1 class="header_text">Please?</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        let noButtonTexts = ["No", "sure?", "WEhh???", "Maybe?", "Really?", "Sure na yan?", "You sure?", "Di nga?", "Ihhh"];
+        let yesButton = document.getElementById('yesButton');
+        let noButton = document.getElementById('noButton');
+        let yesSize = 18; // Initial font size in px
+
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - noButton.offsetWidth) - 85;
+            var y = Math.random() * (window.innerHeight - noButton.offsetHeight) - 48;
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+
+            // Change No button text randomly
+            noButton.innerText = noButtonTexts[Math.floor(Math.random() * noButtonTexts.length)];
+
+            // Increase Yes button size
+            yesSize += 4; // Increase by 4px each time
+            yesButton.style.fontSize = `${yesSize}px`;
+        }
+    </script>
+
+    <audio id="bgAudio" src="bg.mp3" loop autoplay muted></audio>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let audio = document.getElementById("bgAudio");
+            audio.muted = false;
+            audio.play();
+        });
+    </script>
+</body>
+</html>
